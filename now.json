@@ -2,5 +2,26 @@
   "version": 2,
   "alias": [
     "functions.findaneighbor.org"
+  ],
+  "env": {
+    "SECRET": "@findaneighbor-email-client-secret",
+    "ID": "@findaneighbor-email-client-id",
+    "REFRESH": "@findaneighbor-email-refresh-token",
+    "EMAIL": "@findaneighbor-email-address",
+    "EMAIL_GATEKEEPER": "@findaneighbor-email-gatekeeper"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/$1",
+      "continue": true
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "api/404"
+    }
   ]
 }

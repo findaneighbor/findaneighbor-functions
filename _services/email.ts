@@ -19,7 +19,7 @@ const smtpTransport = nodemailer.createTransport({
   }
 })
 
-export const sendEmail = (mailOptions: { to: string | string[], subject: string, html: string }) => {
+export const sendEmail = (mailOptions: { to: string | string[], subject: string, html?: string, text?: string }) => {
   return new Promise((resolve, reject) => {
     smtpTransport.sendMail({
       from: EMAIL,
