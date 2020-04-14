@@ -1,10 +1,10 @@
 import nodemailer from 'nodemailer'
 
 const {
-  EMAIL,
-  ID,
-  SECRET,
-  REFRESH
+  EMAIL = '',
+  ID = '',
+  SECRET = '',
+  REFRESH = ''
 } = process.env
 
 const smtpTransport = nodemailer.createTransport({
