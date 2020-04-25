@@ -3,14 +3,14 @@ import { sendEmail } from '../_services/email'
 import fourohfour from './404'
 import { auth0rizeRequest } from '../_services/auth0rize'
 
-const { EMAIL_GATEKEEPER, NODE_ENV } = process.env
+const { HASURA_GRAPHQL_ADMIN_SECRET, NODE_ENV } = process.env
 
 export default async (req: NowRequest, res: NowResponse) => {
   if (req.method !== 'POST') {
     return fourohfour(req, res)
   }
 
-  if (req.headers['email-gatekeeper'] !== EMAIL_GATEKEEPER && !(await auth0rizeRequest(req).catch(e => false))) {
+  if (req.headers['x-hasura-admin-secret'] !== HASURA_GRAPHQL_ADMIN_SECRET && !(await auth0rizeRequest(req).catch(e => false))) {
     return res.status(401).json({ error: 'Unauthorized' })
   }
 

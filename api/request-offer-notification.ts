@@ -7,7 +7,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     return fourohfour(req, res)
   }
 
-  const isAuthorized = await auth0rizeRequest(req)
+  const isAuthorized = await auth0rizeRequest(req, true)
     .catch(err => err instanceof Error ? err : new Error(JSON.stringify(err)))
 
   if (!isAuthorized || isAuthorized instanceof Error) {

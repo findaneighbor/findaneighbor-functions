@@ -2,7 +2,9 @@ import JwksClient from 'jwks-rsa'
 import { JWT } from 'jose'
 
 const client = JwksClient({
-  jwksUri: 'https://findaneighbor.auth0.com/.well-known/jwks.json'
+  jwksUri: process.env.NODE_ENV === 'production'
+    ? 'https://findaneighbor.auth0.com/.well-known/jwks.json'
+    : 'https://findaneighbor-dev.auth0.com/.well-known/jwks.json'
 })
 
 export const getSecret: (token: string) => Promise<string> = (token: string) => {
