@@ -1,10 +1,10 @@
 import nodemailer from 'nodemailer'
 
 const {
-  EMAIL,
-  ID,
-  SECRET,
-  REFRESH
+  EMAIL = '',
+  EMAIL_CLIENT_ID = '',
+  EMAIL_CLIENT_SECRET = '',
+  EMAIL_REFRESH_TOKEN = ''
 } = process.env
 
 const smtpTransport = nodemailer.createTransport({
@@ -13,9 +13,9 @@ const smtpTransport = nodemailer.createTransport({
   auth: {
     user: EMAIL,
     type: 'oauth2',
-    clientId: ID,
-    clientSecret: SECRET,
-    refreshToken: REFRESH
+    clientId: EMAIL_CLIENT_ID,
+    clientSecret: EMAIL_CLIENT_SECRET,
+    refreshToken: EMAIL_REFRESH_TOKEN
   }
 })
 
