@@ -37,11 +37,19 @@ export default async (req: NowRequest, res: NowResponse) => {
     .catch(err => err instanceof Error ? err : new Error(JSON.stringify(err)))
 
   if (result instanceof Error) {
-    const revertRole = app_metadata.role && oldRole !== app_metadata.role
-      ? app_metadata.role
-      : oldRole || 'user'
+    if (result.name === 'Not Found') {
+      const deletedUser = await gql(`
+        mutation deleteUser ($id: String!) {
+          delete_user(where: {id: {_eq: $id}}) {
+            affected_rows
+          }
+        }
+      `, { id: userId })
+    } else if (newRole !== oldRole) {
+      const revertRole = app_metadata.role && oldRole !== app_metadata.role
+        ? app_metadata.role
+        : oldRole || 'user'
 
-    if (newRole !== oldRole) {
       const revert = await gql(`
         mutation updateRole ($id: String!, $role: String) {
           update_user(where: { id: { _eq: $id } }, _set: { role: $role }) {
