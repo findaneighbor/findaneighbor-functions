@@ -8,4 +8,4 @@ const client = new GraphQLClient(HASURA_SERVER_URL, {
   }
 })
 
-export const gql = (query: string, variables?: any) => client.request(query, variables)
+export const gql = (query: string, variables?: any): any => client.request(query, variables)
