@@ -27,7 +27,7 @@
     "@types/auth0": "^2.20.3",
     "@types/node-fetch": "^2.5.6",
     "@types/nodemailer": "^6.4.0",
-    "auth0": "^2.24.0",
+    "auth0": "^2.27.1",
     "graphql-request": "^1.8.2",
     "jose": "^1.25.0",
     "jwks-rsa": "^1.7.0",
