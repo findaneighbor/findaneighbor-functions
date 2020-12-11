@@ -41,7 +41,9 @@ export default async (req: NowRequest, res: NowResponse) => {
         }
       }
     }
-  `, { id }).catch((err: any) => err instanceof Error ? err : new Error(JSON.stringify(err)))
+  `, { id }).catch((err: any) => ({
+    request_for_help_by_pk: err instanceof Error ? err : new Error(JSON.stringify(err))
+  }))
 
   if (fullRequest instanceof Error) {
     console.error(fullRequest)
