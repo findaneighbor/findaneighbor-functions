@@ -81,8 +81,8 @@ export default async (req: NowRequest, res: NowResponse) => {
   if (sent instanceof Error) {
     console.error(sent)
 
-    res.status(500).json({ error: sent, message: 'Unable to send emails' })
+    return res.status(500).json({ error: sent, message: 'Unable to send emails' })
   }
 
-  res.status(200).json({ success: true })
+  return res.status(200).json({ success: true })
 }
