@@ -7,6 +7,8 @@ const {
   EMAIL_REFRESH_TOKEN = ''
 } = process.env
 
+console.log(EMAIL, EMAIL_CLIENT_ID, EMAIL_CLIENT_SECRET, EMAIL_REFRESH_TOKEN)
+
 const smtpTransport = nodemailer.createTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
