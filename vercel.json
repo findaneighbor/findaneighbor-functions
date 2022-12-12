@@ -3,16 +3,6 @@
   "alias": [
     "functions.findaneighbor.org"
   ],
-  "env": {
-    "HASURA_SERVER_URL": "@findaneighbor-hasura-server-url",
-    "AUTH0_CLIENT_ID": "@findaneighbor-auth0-client-id",
-    "AUTH0_CLIENT_SECRET": "@findaneighbor-auth0-client-secret",
-    "HASURA_GRAPHQL_ADMIN_SECRET": "@findaneighbor-x-hasura-admin-secret",
-    "EMAIL_CLIENT_SECRET": "@findaneighbor-email-client-secret",
-    "EMAIL_CLIENT_ID": "@findaneighbor-email-client-id",
-    "EMAIL_REFRESH_TOKEN": "@findaneighbor-email-refresh-token",
-    "EMAIL": "@findaneighbor-email-address"
-  },
   "routes": [
     {
       "src": "/.*",
